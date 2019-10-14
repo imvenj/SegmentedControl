@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 open class SegmentedControl: UIControl {
     open weak var delegate: SegmentedControlDelegate?
 
