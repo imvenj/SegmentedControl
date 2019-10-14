@@ -111,6 +111,19 @@ open class SegmentedControl: UIControl {
     fileprivate lazy var selectionIndicatorLayer = CALayer()
     fileprivate var longPressGesture: UILongPressGestureRecognizer?
 
+    open override var intrinsicContentSize: CGSize {
+        get {
+            let segmentSizes = (0..<titles.count).map { self.rectForSegment(at: $0) ?? .zero }
+            let width = segmentSizes.reduce(0.0) { (result, rect) -> Double in
+                return result + Double(rect.width)
+            }
+            let height = segmentSizes.reduce(0.0) { (result, rect) -> Double in
+                return max(result, Double(rect.height))
+            }
+            return CGSize(width: width, height: height)
+        }
+    }
+
     // MARK: - Public functions
     open class func initWithTitles(_ titles: [NSAttributedString], selectedTitles: [NSAttributedString]?) -> SegmentedControl {
         let segmentedControl = SegmentedControl(frame: CGRect.zero)
