@@ -103,7 +103,9 @@ open class SegmentedControl: UIControl {
 
     fileprivate lazy var scrollView: SCScrollView = {
         let scrollView = SCScrollView()
+        #if os(iOS)
         scrollView.scrollsToTop = false
+        #endif
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         return scrollView

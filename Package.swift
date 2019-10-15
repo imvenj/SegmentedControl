@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "SegmentedControl",
-    platforms: [.iOS(.v10)],
+    platforms: [.iOS(.v8), .tvOS(.v10)],
     products: [
         .library(
             name: "SegmentedControl",
